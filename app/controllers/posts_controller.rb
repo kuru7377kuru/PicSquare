@@ -37,6 +37,11 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
   end
+
+  def search
+    @posts = Post.search(params[:keyword])
+  end
+
   private
   def post_params
     params.require(:post).permit(:name, :text, images_attributes: [:image]).merge(user_id: current_user.id)
