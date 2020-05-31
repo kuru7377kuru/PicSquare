@@ -1,0 +1,12 @@
+  <p><%= @nickname %>さんの投稿一覧</p>
+
+  <% @posts.each do |post| %>
+
+      <%= simple_format(post.text) %>
+      <span class="name"><%= post.name %></span>
+      <%=  post.images.each do |image|  %>
+      <%= image_tag image.image.to_s %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
