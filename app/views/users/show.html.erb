@@ -7,6 +7,18 @@
       <%=  post.images.each do |image|  %>
       <%= image_tag image.image.to_s %>
       <% end %>
-    </div>
+
+  <% end %>
+
+  <p><%= @id %>さんの投稿一覧</p>
+
+  <% @favorites.each do |f| %>
+
+      <%= simple_format(f.post.text) %>
+      <span class="name"><%= f.post.name %></span>
+      <%=  f.post.images.each do |image|  %>
+      <%= image_tag image.image.to_s %>
+      <% end %>
+
   <% end %>
 </div>

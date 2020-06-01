@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:images, :user).order("created_at DESC").page(params[:page]).per(5)
-    @imm = Image.all
 
   end
 
