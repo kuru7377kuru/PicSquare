@@ -19,9 +19,13 @@
         </li>
         <% end %>
       </ul>
+
+      
       <%= simple_format(post.text) %>
+        
       <span class="name">
         <%= post.name %>
+        (<%= post.liked_users.count %>)
       </span>
       <span>
         <%=  post.images.first(1).each do |image|  %>

@@ -1,5 +1,10 @@
   <p><%= @nickname %>さんの投稿一覧</p>
-
+  <h3>いいねしている投稿</h3>
+  <% @user.liked_posts.each do |post| %>
+    <%= post.user.nickname %>
+    <%= post.name %>
+    <br>
+  <% end %>
   <% @posts.each do |post| %>
 
       <%= simple_format(post.text) %>
@@ -9,7 +14,8 @@
       <% end %>
 
   <% end %>
-
+  
+  
   <p><%= @id %>さんの投稿一覧</p>
 
   <% @favorites.each do |f| %>
@@ -19,6 +25,5 @@
       <%=  f.post.images.each do |image|  %>
       <%= image_tag image.image.to_s %>
       <% end %>
-
   <% end %>
 </div>
