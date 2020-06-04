@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-
+  before_action :authenticate_user!, only: [:create]
 
   def index
     @posts = Post.includes(:images, :user).order("created_at DESC").page(params[:page]).per(5)
+    @post = Post.new
 
   end
 
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    @like = Like.new
   end
 
   def edit

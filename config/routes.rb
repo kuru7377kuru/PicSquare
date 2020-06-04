@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
     resources :comments, only: :create
+    resources :likes, only: [:create, :destroy]
     collection do
       get 'search'
     end
