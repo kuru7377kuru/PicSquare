@@ -17,10 +17,27 @@
     <span class="name"><%= @post.name %>
     </span>
     <span>
-      <%=  @post.images.each do |image|  %>
+      <%  @post.images.each do |image|  %>
       <%= image_tag image.image.to_s %>
       <% end %>
     </span>
+  <%= pie_chart @dd , id: "users-chart", width: "800px", height: "500px", legend: false ,label: "Value"%>
+  <%= pie_chart Post.group(:user_id).count %>
+  <%= pie_chart @ss%>
+  <% @dd.each do |key, value| %>
+    <%= key %>
+    <%= value %>
+  <% end %>
+
+  <% @dd.each do |key, value| %>
+    <%= User.find(key).nickname %>
+  <% end %>
+  <br>
+  <%= @ss.each do |key, value| %>
+    <%= key %>
+    <%= value %>
+  <% end %>
+
   <div class="container">
     <% if current_user %>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>

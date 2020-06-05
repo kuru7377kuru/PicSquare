@@ -23,6 +23,15 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
     @like = Like.new
+    @data = {'2019-06-01': 100, '2019-06-02': 200, '2019-06-03': 150}
+    @dd = Post.group(:user_id).count(:user_id).sort.reverse
+    @ss = {}
+    @dd.each do |key, value|
+      name = User.find(key).nickname
+      atai = value.to_i
+      @ss[name] = atai
+    end
+
   end
 
   def edit
