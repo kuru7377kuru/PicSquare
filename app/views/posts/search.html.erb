@@ -24,7 +24,7 @@
         <%= post.name %>
       </span>
       <span>
-        <%=  post.images.first(1).each do |image|  %>
+        <%  post.images.first(1).each do |image|  %>
         <%= image_tag image.image.to_s %>
         <% end %>
         <a href="/users/<%= post.user.id %>">

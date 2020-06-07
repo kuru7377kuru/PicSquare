@@ -1,13 +1,11 @@
 class PostsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
-  before_action :authenticate_user!, only: [:create]
+ # before_action :move_to_index, except: [:index, :show]
+ # before_action :authenticate_user!, only: [:create]
 
   def index
     @posts = Post.includes(:images, :user).order("created_at DESC").page(params[:page]).per(5)
     @post = Post.new
-
   end
-
   def new
     @post = Post.new
     @post.images.build
@@ -51,6 +49,12 @@ class PostsController < ApplicationController
   def search
     @posts = Post.search(params[:keyword])
   end
+
+#  def search_Ransack
+#    @search = Post.ransack(params[:q])
+#    # 検索結果
+#    @results = @search.result.includes(:images, :user).page(params[:page])
+#  end
 
   private
   def post_params

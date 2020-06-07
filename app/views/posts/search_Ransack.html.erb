@@ -1,0 +1,29 @@
+<%= search_form_for @search do |f| %>
+  # nameカラムに対して部分一致検索ができる
+  <%= f.label :name_cont, "商品名を含む" %>
+  <%= f.search_field :name_cont %>
+  # 検索ボタン
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+
+<% if @results.any? %>
+ <% @results.each do |post| %>
+    <div class="more">
+    <ul class="more_list">
+      <li>
+        <%= link_to '詳細', "/posts/#{post.id}", method: :get %>
+      </li>
+      <% if user_signed_in? && current_user.id == post.user_id %>
+      <li>
+        <%= link_to '編集', "/posts/#{post.id}/edit", method: :get %>
+      </li>
+
+      <li>
+        <%= link_to '削除', "/posts/#{post.id}", method: :delete %>
+      </li>
+      <% end %>
+    </ul>
+ <% end %>
+<% end %>
+
+

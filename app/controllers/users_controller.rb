@@ -5,10 +5,8 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
-    @nickname = current_user.nickname
-    @id = current_user.id
-    @posts = current_user.posts.order("created_at DESC")
-    @favorites = Favorite.where(user_id: @id).all
+    @posts = @user.posts.order("created_at DESC")
+    @favorites = Favorite.where(user_id: @user.id).all
     
   end
 end

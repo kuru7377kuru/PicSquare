@@ -1,29 +1,33 @@
-  <p><%= @nickname %>さんの投稿一覧</p>
-  <h3>いいねしている投稿</h3>
-  <% @user.liked_posts.each do |post| %>
-    <%= post.user.nickname %>
-    <%= post.name %>
-    <br>
-  <% end %>
+  <p><%= current_user.nickname %>さんの投稿一覧</p>
   <% @posts.each do |post| %>
-
-      <%= simple_format(post.text) %>
-      <span class="name"><%= post.name %></span>
-      <%=  post.images.each do |image|  %>
+    <%= simple_format(post.text) %>
+    <span class="name"><%= post.name %></span>
+    <%  post.images.each do |image|  %>
       <%= image_tag image.image.to_s %>
-      <% end %>
-
+    <% end %>
   <% end %>
   
-  
-  <p><%= @id %>さんの投稿一覧</p>
+  <h3>いいねしている投稿</h3>
+  <% if @user.liked_posts.any? %>
+    <% @user.liked_posts.each do |post| %>
+      <%= post.user.nickname %>
+      <%= post.name %>
+      <br>
+    <% end %>
+  <% else %>
+  aho
+  <% end %>
 
-  <% @favorites.each do |f| %>
-
-      <%= simple_format(f.post.text) %>
-      <span class="name"><%= f.post.name %></span>
-      <%=  f.post.images.each do |image|  %>
-      <%= image_tag image.image.to_s %>
-      <% end %>
+  <p>お気に入りした投稿</p>
+  <% if @favorites.any? %>
+    <% @favorites.each do |f| %>
+        <%= simple_format(f.post.text) %>
+        <span class="name"><%= f.post.name %></span>
+        <%  f.post.images.each do |image|  %>
+        <%= image_tag image.image.to_s %>
+        <% end %>
+    <% end %>
+  <% else %>
+  baka
   <% end %>
 </div>

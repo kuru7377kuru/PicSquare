@@ -3,6 +3,8 @@
     <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
     <%= form.submit "検索", class: "search-btn" %>
   <% end %>
+
+
   <% @posts.each do |post| %>
       <div class="more">
       <ul class="more_list">
@@ -28,18 +30,21 @@
         (<%= post.liked_users.count %>)
       </span>
       <span>
-        <%=  post.images.first(1).each do |image|  %>
-        <%= image_tag image.image.to_s %>
+        <%  post.images.first(1).each do |image|  %>
+        <%= link_to image_tag image.image.to_s ,href: "/posts/#{2}", method: :get %>
+         
         <% end %>
-        <a href="/users/<%= post.user.id %>">
-          <span>投稿者</span><%= post.user.nickname %>
+        <a href="/users/<%= post.user.id %>"
+          <span>投稿者</span><%= post.user.nickname %></span>
         </a>
       </span>
     </div>
-    <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
-    <%= link_to "お気に入り",post_add_path(post),method: :post %>
-    <% else %>
-    <%= link_to "お気に入り解除",post_add_path(post),method: :delete %>
+    <% if user_signed_in? %>
+      <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
+      <%= link_to "お気に入り",post_add_path(post),method: :post %>
+      <% else %>
+      <%= link_to "お気に入り解除",post_add_path(post),method: :delete %>
+      <% end %>
     <% end %>
   <% end %>
   <%= paginate(@posts) %>
