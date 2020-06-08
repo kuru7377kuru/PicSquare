@@ -1,33 +1,198 @@
+<div id="contents">
+  <div class="menu">
+    <ul>
+      <% if user_signed_in? %>
+        <li><%= link_to "写真を投稿する", new_post_path %></li>
+      <% end %> 
+      <% if user_signed_in? %>
+        <li><%= link_to "マイページ", "/users/#{current_user.id}" %></li>
+      <% end%>  
+      <% if user_signed_in? %>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <% end %>  
+
+      <% if !user_signed_in? %>
+        <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+      <% end %> 
+      <% if !user_signed_in? %>
+        <li> <%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+      <% end %> 
+    </ul>
+  </div> 
+  <div class="main">
   <p><%= current_user.nickname %>さんの投稿一覧</p>
-  <% @posts.each do |post| %>
-    <%= simple_format(post.text) %>
-    <span class="name"><%= post.name %></span>
-    <%  post.images.each do |image|  %>
-      <%= image_tag image.image.to_s %>
-    <% end %>
-  <% end %>
+    <div class="posts">
+      <% @posts.each do |post| %>    
+        <div class="post">  
+          <div class="post__title">
+            <%= post.name %>(<%= post.liked_users.count %>)
+          </div>    
+          <%  post.images.first(1).each do |image|  %>              
+           
+          <br>
+            <%= link_to image_tag image.image.to_s ,href: "/posts/#{2}", method: :get , width: "200px" ,height: "200px"%>
+          <% end %>
+          <div class="more">
+            <div class="more__name">
+              <a href="/users/<%= post.user.id %>"
+                <p class=wwww><%= post.user.nickname %></p>
+              </a>
+            </div>
+            <ul class="more__list">
+              <li>
+                <% if user_signed_in? %>
+                  <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
+                    <%= link_to post_add_path(post),method: :post  do%>
+                    <i class="far fa-star"></i>
+                  <%end%>  
+                <% else %>
+                  <%= link_to post_add_path(post),method: :delete do%>
+                  <i class="fas fa-star"></i>
+              <%end%> 
+          <% end %>
+        <% end %>
+              </li>
+              <li>
+                <%= link_to "/posts/#{post.id}", method: :get do%>
+                  <i class="fas fa-info-circle"></i>
+                <% end %>  
+              </li>
+              <% if user_signed_in? && current_user.id == post.user_id %>
+              <li>
+                <%= link_to "/posts/#{post.id}/edit", method: :get do%>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to "/posts/#{post.id}", method: :delete do%>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>        
+          </div>
+        </div>
+      <% end %>
+    </div>
   
   <h3>いいねしている投稿</h3>
+  <div class="posts">
   <% if @user.liked_posts.any? %>
     <% @user.liked_posts.each do |post| %>
-      <%= post.user.nickname %>
-      <%= post.name %>
-      <br>
-    <% end %>
-  <% else %>
-  aho
-  <% end %>
-
-  <p>お気に入りした投稿</p>
-  <% if @favorites.any? %>
-    <% @favorites.each do |f| %>
-        <%= simple_format(f.post.text) %>
-        <span class="name"><%= f.post.name %></span>
-        <%  f.post.images.each do |image|  %>
-        <%= image_tag image.image.to_s %>
+        <div class="post">  
+          <div class="post__title">
+            <%= post.name %>(<%= post.liked_users.count %>)
+          </div>    
+          <%  post.images.first(1).each do |image|  %>              
+           
+          <br>
+            <%= link_to image_tag image.image.to_s ,href: "/posts/#{2}", method: :get , width: "200px" ,height: "200px"%>
+          <% end %>
+          <div class="more">
+            <div class="more__name">
+              <a href="/users/<%= post.user.id %>"
+                <p class=wwww><%= post.user.nickname %></p>
+              </a>
+            </div>
+            <ul class="more__list">
+              <li>
+                <% if user_signed_in? %>
+                  <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
+                    <%= link_to post_add_path(post),method: :post  do%>
+                    <i class="far fa-star"></i>
+                  <%end%>  
+                <% else %>
+                  <%= link_to post_add_path(post),method: :delete do%>
+                  <i class="fas fa-star"></i>
+              <%end%> 
+          <% end %>
         <% end %>
+              </li>
+              <li>
+                <%= link_to "/posts/#{post.id}", method: :get do%>
+                  <i class="fas fa-info-circle"></i>
+                <% end %>  
+              </li>
+              <% if user_signed_in? && current_user.id == post.user_id %>
+              <li>
+                <%= link_to "/posts/#{post.id}/edit", method: :get do%>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to "/posts/#{post.id}", method: :delete do%>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>        
+          </div>
+        </div>
     <% end %>
   <% else %>
-  baka
+  いいねしている写真はまだありません。
   <% end %>
+  </div>
+  <p>お気に入りした投稿</p>
+  <div class="posts">
+  <% if @favorites.any? %>
+    <% @user.fav_posts.each do |post| %>
+        <div class="post">  
+          <div class="post__title">
+            <%= post.name %>
+          </div>    
+          <%  post.images.first(1).each do |image|  %>              
+           
+          <br>
+            <%= link_to image_tag image.image.to_s ,href: "/posts/#{2}", method: :get , width: "200px" ,height: "200px"%>
+          <% end %>
+          <div class="more">
+            <div class="more__name">
+              <a href="/users/<%= post.user.id %>"
+                <p class=wwww><%= post.user.nickname %></p>
+              </a>
+            </div>
+            <ul class="more__list">
+              <li>
+                <% if user_signed_in? %>
+                  <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
+                    <%= link_to post_add_path(post),method: :post  do%>
+                    <i class="far fa-star"></i>
+                  <%end%>  
+                <% else %>
+                  <%= link_to post_add_path(post),method: :delete do%>
+                  <i class="fas fa-star"></i>
+              <%end%> 
+          <% end %>
+        <% end %>
+              </li>
+              <li>
+                <%= link_to "/posts/#{post.id}", method: :get do%>
+                  <i class="fas fa-info-circle"></i>
+                <% end %>  
+              </li>
+              <% if user_signed_in? && current_user.id == post.user_id %>
+              <li>
+                <%= link_to "/posts/#{post.id}/edit", method: :get do%>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to "/posts/#{post.id}", method: :delete do%>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>        
+          </div>
+        </div>
+    <% end %>
+  <% else %>
+  お気に入りしている写真はまだありません  
+  <% end %>
+  </div>
+</div>
 </div>

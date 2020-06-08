@@ -1,0 +1,78 @@
+#contents {
+  background-color: $gray;
+  height: 100vh;
+  i {
+    color : $orange;
+    text-decoration: none;
+  }
+
+
+  .main {
+    background-color: $sky;
+    height: 100%;
+    overflow: scroll;
+    
+    .title {
+      font-weight: bold;
+      text-align: center;
+      padding: 30px;
+      border-bottom: 1px solid black;
+    }
+    .posts {
+      display: flex;
+      flex-wrap: wrap;
+      .post {
+        background-color: white;
+        margin: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,0.4);;
+
+        &__title {
+          background-color: $yellow;
+          width: 100%;
+          text-align: center;
+        }
+        
+        .more {
+          &__name {
+            text-align: right;
+            margin-right: 10px;
+            .wwww {
+            color: grey;
+            text-decoration: none;
+            font-size: small;
+            
+            }
+          }
+          &__list {
+            display: flex;
+            justify-content: space-evenly;
+            li {
+              padding: 5px 10px;
+            }
+          }
+        }
+      }
+    }
+  } 
+}
+
+.contents {
+  background-color: $sky;
+  height: 100vh;
+  align-items: center;
+  margin: 0 auto;
+  .title {
+    font-weight: bold;
+    text-align: center;
+    padding: 30px;
+    border-bottom: 1px solid black;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    
+    .post-form {
+      margin: 20px auto;;
+    }
+  }
+}
