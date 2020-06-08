@@ -1,17 +1,22 @@
 <div class="contents row">
+  <h3 class="title">
+    写真を投稿する
+  </h3>   
   <div class="container">
-    <%= form_with(model: @post, local: true) do |form| %>
-      <h3>
-        投稿する
-      </h3>
-      <%= form.text_field :name, placeholder: "題名" %>
-      <%= form.text_area :text, placeholder: "text" , rows: "10" %>
+ 
+    <%= form_with(model: @post, local: true ,class: "post-form")  do |form| %>
 
+      <%= form.text_field :name, placeholder: "題名" %>
+      <br>
+      <%= form.text_area :text, placeholder: "写真の説明文" , rows: "10" %>
+      <br>
+      <p>投稿する写真を選択する</p>
       <%= form.fields_for :images do |image|%>
         <%= image.file_field :image %>
         <%= image.hidden_field :id, value: image.object.id %> 
       <% end %>
-      <%= form.submit "SEND" %>
+      <br>
+      <%= form.submit "投稿する" %>
       
     <% end %>
   </div>

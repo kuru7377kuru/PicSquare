@@ -3,7 +3,7 @@ class PostsController < ApplicationController
  # before_action :authenticate_user!, only: [:create]
 
   def index
-    @posts = Post.includes(:images, :user).order("created_at DESC").page(params[:page]).per(5)
+    @posts = Post.includes(:images, :user).order("created_at DESC").page(params[:page]).per(20)
     @post = Post.new
   end
   def new
