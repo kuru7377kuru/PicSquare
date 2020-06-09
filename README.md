@@ -1,24 +1,21 @@
-# README
+【PicSquare】
+PicSquareは写真との出会いと交流を応援するWebアプリケーションです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+【概要】
+ローカルに保存した写真をWeb上に公開することができます。複数枚の写真を同時に投稿したり、あとで写真を変更することもできます。
+アイコン表示で誰でも直感的に操作できるデザインになっています。
 
-Things you may want to cover:
+・沢山の写真の中から検索をかけて好きな写真を見つけることができます。
+・投稿された写真をお気に入りに登録できます。あとでマイページからお気に入りの写真のリストを見ることできます。
+・素晴らしい写真には「いいね」をつけることやコメントを投稿することができます。投稿者は通知を受け取ることができるので
+　他のユーザーからの写真に対する反応をすぐにチェックできます。
 
-* Ruby version
+【導入方法】
+以下のコマンドを実行してください
+#git clone https://github.com/kuru7377kuru/PicSquare.git
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+【動作環境】
+Rails 5.2.4.3
+ruby 2.5.1p57 
+RubyGems 2.7.6
+DataBase MySql
