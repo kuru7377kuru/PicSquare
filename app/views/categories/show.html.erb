@@ -17,19 +17,17 @@
       <% if !user_signed_in? %>
         <li> <%= link_to "新規登録", new_user_registration_path, class: 'list'  %></li>
       <% end %> 
-      <li> <%= link_to "カテゴリーリスト", categories_path, class: 'list'  %></li>
     </ul>
-  </div> 
+  </div>   
   <div class="main">
-  <h3 class="title">最近投稿された写真</h3>
+    <h3 class="title"><%= @category.name%></h3>
     <div class="posts">
-      <% @posts.each do |post| %>    
+      <% @aa.each do |post| %>
         <div class="post">  
           <div class="post__title">
             <%= post.name %>(<%= post.liked_users.count %>)
           </div>    
-          <%  post.images.first(1).each do |image|  %>              
-           
+          <%  post.images.first(1).each do |image|  %>                        
           <br>
             <%= link_to image_tag image.image.to_s ,href: "/posts/#{2}", method: :get , width: "200px" ,height: "200px"%>
           <% end %>
@@ -49,7 +47,7 @@
                 <% else %>
                   <%= link_to post_add_path(post),method: :delete do%>
                   <i class="fas fa-star"></i>
-              <%end%> 
+                <%end%> 
             <% end %>
           <% end %>
               </li>
@@ -64,7 +62,6 @@
                   <i class="fas fa-edit"></i>
                 <% end %>
               </li>
-
               <li>
                 <%= link_to "/posts/#{post.id}", method: :delete do%>
                   <i class="fas fa-trash-alt"></i>
@@ -72,18 +69,8 @@
               </li>
               <% end %>
             </ul>        
-
-            <span>
-
-
-            </span>
           </div>
-
         </div>
-      
       <% end %>
-    </div>
-    <%= paginate(@posts) %>
-    
   </div>
 </div>

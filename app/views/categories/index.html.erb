@@ -1,0 +1,33 @@
+<div id="contents">
+  <div class="menu">
+    <ul>
+      <% if user_signed_in? %>
+        <li><%= link_to "写真を投稿する", new_post_path, class: 'list'  %></li>
+      <% end %> 
+      <% if user_signed_in? %>
+        <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'list'  %></li>
+      <% end%>  
+      <% if user_signed_in? %>
+        <li><%= link_to "ログアウト", destroy_user_session_path,  method: :delete , class: 'list' %></li>
+      <% end %>  
+
+      <% if !user_signed_in? %>
+        <li><%= link_to "ログイン", new_user_session_path, class: 'list' %></li>
+      <% end %> 
+      <% if !user_signed_in? %>
+        <li> <%= link_to "新規登録", new_user_registration_path, class: 'list'  %></li>
+      <% end %> 
+      <li> <%= link_to "カテゴリーリスト", categories_path, class: 'list'  %></li>
+    </ul>
+  </div> 
+  <div class="main">
+    <h3 class="title">カテゴリー一覧</h3>
+    <% @categories.each do |c| %>
+      <%= link_to category_path(c.id) do%>
+        <div>
+        <%= c.name%>(<%=c.posts.count%>) 
+        </div>
+      <% end %>
+    <% end%>  
+  <div>
+</div>

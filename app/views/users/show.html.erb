@@ -2,25 +2,26 @@
   <div class="menu">
     <ul>
       <% if user_signed_in? %>
-        <li><%= link_to "写真を投稿する", new_post_path %></li>
+        <li><%= link_to "写真を投稿する", new_post_path, class: 'list'  %></li>
       <% end %> 
       <% if user_signed_in? %>
-        <li><%= link_to "マイページ", "/users/#{current_user.id}" %></li>
+        <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'list'  %></li>
       <% end%>  
       <% if user_signed_in? %>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path,  method: :delete , class: 'list' %></li>
       <% end %>  
 
       <% if !user_signed_in? %>
-        <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+        <li><%= link_to "ログイン", new_user_session_path, class: 'list' %></li>
       <% end %> 
       <% if !user_signed_in? %>
-        <li> <%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+        <li> <%= link_to "新規登録", new_user_registration_path, class: 'list'  %></li>
       <% end %> 
+      <li> <%= link_to "カテゴリーリスト", categories_path, class: 'list'  %></li>
     </ul>
   </div> 
   <div class="main">
-  <p><%= current_user.nickname %>さんの投稿一覧</p>
+  <h3 class="title2"><%= current_user.nickname %>さんの投稿一覧</h3>
     <div class="posts">
       <% @posts.each do |post| %>    
         <div class="post">  
@@ -76,7 +77,7 @@
       <% end %>
     </div>
   
-  <h3>いいねしている投稿</h3>
+  <h3 class="title2">いいねしている投稿</h3>
   <div class="posts">
   <% if @user.liked_posts.any? %>
     <% @user.liked_posts.each do |post| %>
@@ -135,7 +136,7 @@
   いいねしている写真はまだありません。
   <% end %>
   </div>
-  <p>お気に入りした投稿</p>
+  <h3 class=title2>お気に入りした投稿</h3>
   <div class="posts">
   <% if @favorites.any? %>
     <% @user.fav_posts.each do |post| %>
