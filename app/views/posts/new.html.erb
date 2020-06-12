@@ -1,5 +1,5 @@
 <div class="contents row">
-  <h3 class="title">
+  <h3 class="title3">
     写真を投稿する
   </h3>   
   <div class="container">
@@ -16,6 +16,16 @@
         <%= image.hidden_field :id, value: image.object.id %> 
       <% end %>
       <br>
+
+      <%= form.label :category, "カテゴリ"%>
+      
+      <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+        <%= category.label do%>
+          <%= category.check_box %>
+          <%= category.text %>
+        <% end %>
+      <% end %>
+
       <%= form.submit "投稿する" %>
       
     <% end %>

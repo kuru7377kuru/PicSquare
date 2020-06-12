@@ -1,13 +1,15 @@
 class Post < ApplicationRecord
   has_many :images, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   belongs_to :user
-  has_many :favorites
-  has_many :likes
-  has_many :liked_users, through: :likes, source: :user
-  has_many :users, through: :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user, dependent: :destroy
+  has_many :users, through: :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :post_category_relations, dependent: :destroy
+  has_many :categories, through: :post_category_relations
 
   def self.search(search)
     return Post.all unless search

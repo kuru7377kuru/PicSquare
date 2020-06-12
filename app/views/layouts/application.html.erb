@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pictweet</title>
+    <title>PicSquare</title>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -25,9 +25,9 @@
     <header class="header">
       <div class="header__bar row">
         <div class="header__bar__left row">
-          <h1 class="picsquare"><a href="/">PicSquare</a></h1>
+          <h1 class="picsquare"><a href="/" id="main-title">PicSquare</a></h1>
           <% if user_signed_in? %>
-            <span><%= current_user.nickname %>さんでログイン中</span>
+            <span class="login-name"><%= current_user.nickname %>さんでログイン中</span>
           <% end %>
         </div>
         <div class="search-box">

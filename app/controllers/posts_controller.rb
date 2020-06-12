@@ -29,6 +29,7 @@ class PostsController < ApplicationController
       atai = value.to_i
       @ss[name] = atai
     end
+    @categories = Category.all
 
   end
 
@@ -58,11 +59,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:name, :text, images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :text, images_attributes: [:image], category_ids: []).merge(user_id: current_user.id)
   end
 
   def update_post_params
-    params.require(:post).permit(:name, :text, images_attributes: [:image, :_destroy, :id])
+    params.require(:post).permit(:name, :text, images_attributes: [:image, :_destroy, :id], category_ids: [])
   end
 
   def move_to_index
