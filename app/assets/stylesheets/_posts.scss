@@ -129,3 +129,38 @@
 .container {
   color: $dimwhite;
 }
+
+.post {
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 50px rbga(50,30,0,0.6);
+}
+
+.post s {
+  z-index: 0;
+  box-shadow: inset 0 0 50px rbga(50,30,0,0.6);
+}
+.post .po {
+  color: red;
+  background-color: #222;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  bottom: -100px;
+  opacity: 0.8;
+
+  .post-title {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 5px;
+  }
+
+  .post-name {
+    color: grey;
+    text-align: right;
+    padding-bottom: 5px;
+  }
+}
+

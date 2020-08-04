@@ -37,7 +37,7 @@
           <div class="more">
             <div class="more__name">
               <a href="/users/<%= post.user.id %>"
-                <p class=wwww><%= post.user.nickname %></p>
+                <p class="wwww"><%= post.user.nickname %></p>
               </a>
             </div>
             <ul class="more__list">
@@ -87,6 +87,27 @@
     <%= paginate(@posts) %>
     
   </div>
+    <div class="main">
+  <h3 class="title">最近投稿された写真</h3>
+    <div class="posts">
+      <% @posts.each do |post| %> 
+        <div class="post">   
+        <div class="s"> 
+          <%  post.images.first(1).each do |image|  %>           
+            <%= link_to "/posts/#{post.id}", method: :get do%>
+              <%=image_tag image.image.to_s  , width: "200px" ,height: "200px" %>
+              <div class="po">
+                <div class="post-title"><%= post.name%></div>
+                <div class="post-name"><%= post.user.nickname %></div>
+              </div>  
+            <% end %>
+          <% end %>
+        </div>  
+        </div>
+      
+      <% end %>
+    </div>
+    <%= paginate(@posts) %>
+    
+  </div>
 </div>
-<h1>fdsfs</h1>
-<h1>fdsfs</h1>
