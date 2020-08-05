@@ -15,4 +15,10 @@ $(function() {
     },duration)
   });
 
+  $('#masonry-container').masonry({
+    itemSelector: '.box',
+    columnWidth: 40,
+    gutterWidth: 40
+  });
+
  });

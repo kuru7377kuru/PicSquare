@@ -17,3 +17,4 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+//= require masonry/jquery.masonry
