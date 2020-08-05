@@ -110,4 +110,19 @@
     <%= paginate(@posts) %>
     
   </div>
+  <div id="masonry-container" class="transitions-enable clearfix">
+    <% @posts.each do |post| %>  
+        <%  post.images.first(1).each do |image|  %>    
+          <div class="box">          
+            <%= link_to "/posts/#{post.id}", method: :get do%>
+              <%=image_tag image.image.to_s %>
+          </div>    
+          <% end %>
+        <% end %>
+      
+    <% end %>
+    <div class="box">...</div>
+    <div class="box">...</div>
+    <div class="box">...</div>
+  </div>
 </div>
