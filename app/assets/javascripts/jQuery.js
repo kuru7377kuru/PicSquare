@@ -2,7 +2,6 @@ $(function() {
   $("h1").css("color", "green");
   
   var duration = 300;
-
   $('.post').on("mouseover", function() {
     $(this).find('.po').stop(true).animate({
       bottom: "0px"
@@ -11,14 +10,14 @@ $(function() {
 
   $('.post').on("mouseout", function() {
     $(this).find('.po').stop(true).animate({
-      bottom: "-100px"
+      bottom: "-25%"
     },duration)
   });
 
   $('#masonry-container').masonry({
     itemSelector: '.box',
-    columnWidth: 40,
-    gutterWidth: 40
+    columnWidth: 10,
+    gutterWidth: 10
   });
 
  });

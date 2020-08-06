@@ -146,7 +146,9 @@
   position: absolute;
   width: 100%;
   z-index: 10;
-  bottom: -100px;
+
+  min-height: 10%;
+  bottom: -100%;
   opacity: 0.8;
 
   .post-title {
@@ -154,13 +156,17 @@
     font-weight: bold;
     text-align: center;
     padding-top: 2px;
-    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 18px;
   }
 
   .post-name {
-    color: grey;
+    color: white;
     text-align: right;
     padding-bottom: 5px;
+    padding-right: 10px;
+    font-size: 12px;
   }
 }
 
@@ -173,6 +179,18 @@
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
+  background-color: $dimblack;
+  height: 100%;
+  overflow: scroll;
+}
+
+#masonry-container .box {
+  max-width: 25%;
+  min-width: 10%;
+
+}
+#masonry-container .eded {
+
 }
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
