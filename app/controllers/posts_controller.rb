@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:images, :user).order("created_at DESC").page(params[:page]).per(20)
     @post = Post.new
+    @likedPosts = Post.joins(:likes).group(:post_id).order('count(likes.user_id) desc')
   end
   def new
     @post = Post.new

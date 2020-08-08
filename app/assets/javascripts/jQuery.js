@@ -20,4 +20,29 @@ $(function() {
     gutterWidth: 10
   });
 
- });
+  $('.slide').on("mouseover", function() {
+    $(this).find('.po').stop(true).animate({
+      bottom: "0px"
+    },duration)
+  });
+
+  $('.slide').on("mouseout", function() {
+    $(this).find('.po').stop(true).animate({
+      bottom: "-25%"
+    },duration)
+  });
+
+  $(function() {
+    $('.slideshow-slides').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      centerMode: true,
+      variableWidth: true
+    });
+  });
+
+});
+
+ 
