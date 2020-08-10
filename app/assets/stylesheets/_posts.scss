@@ -174,7 +174,7 @@
 }
 
 #masonry-container {
-  background: #FFF;
+  background: #222;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -190,12 +190,34 @@
 #masonry-container .box {
   max-width: 25%;
   min-width: 10%;
-
+  color: #222;
 }
-#masonry-container .eded {
 
-}
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+.slide {
+  margin: 0px 5px;
+  padding: 10px 5px;
+  background-color:#222;
+}
+
+.slide-detail {
+  background-color:#222;
+  .post-title {
+    text-align: center;
+    color: #EEE;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+  .post-name {
+    text-align: right;
+    color: #EEE;
+    text-decoration: none;
+    padding-right: 5%;
+  }
+}
