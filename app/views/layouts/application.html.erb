@@ -7,6 +7,58 @@
     <%= csrf_meta_tags %>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="menu">
+        <nav>
+          <div class="header__bar row">
+            <div class="header__bar__left row">
+              <h1 class="picsquare"><a href="/" id="main-title">PicSquare</a></h1>
+              <% if user_signed_in? %>
+                <span class="login-name"><%= current_user.nickname %>さんでログイン中</span>
+              <% end %>
+            </div>
+          </div>
+          <div class="menu-list">
+            <div class="search-box">
+              <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+              <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+              <%= form.submit "検索", class: "search-btn" %>
+              <% end %>
+            </div>
+            <ul>
+              <% if user_signed_in? %>
+                <li><%= link_to "写真を投稿する", new_post_path, class: 'list'  %></li>
+              <% end %> 
+              <% if user_signed_in? %>
+                <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'list'  %></li>
+              <% end%>  
+              <% if user_signed_in? %>
+                <li><%= link_to "ログアウト", destroy_user_session_path,  method: :delete , class: 'list' %></li>
+              <% end %>  
+
+              <% if !user_signed_in? %>
+                <li><%= link_to "ログイン", new_user_session_path, class: 'list' %></li>
+              <% end %> 
+              <% if !user_signed_in? %>
+                <li> <%= link_to "新規登録", new_user_registration_path, class: 'list'  %></li>
+              <% end %> 
+              <li> <%= link_to "カテゴリーリスト", categories_path, class: 'list'  %></li>
+            </ul>
+          </div>
+        </nav>
+      </div> 
+    </header>
+    
+    <%= yield %>
+    <footer>
+      <p>
+        Copyright PicTweet 2019.
+      </p>
+    </footer>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript">
       WebFontConfig = {
@@ -22,32 +74,5 @@
         s.parentNode.insertBefore(wf, s);
       })();
     </script>
-  </head>
-
-  <body>
-    <header class="header">
-      <div class="header__bar row">
-        <div class="header__bar__left row">
-          <h1 class="picsquare"><a href="/" id="main-title">PicSquare</a></h1>
-          <% if user_signed_in? %>
-            <span class="login-name"><%= current_user.nickname %>さんでログイン中</span>
-          <% end %>
-        </div>
-        <div class="search-box">
-          <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-          <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-          <%= form.submit "検索", class: "search-btn" %>
-          <% end %>
-        </div>
-
-      </div>
-    </header>
-    
-    <%= yield %>
-    <footer>
-      <p>
-        Copyright PicTweet 2019.
-      </p>
-    </footer>
   </body>
 </html>

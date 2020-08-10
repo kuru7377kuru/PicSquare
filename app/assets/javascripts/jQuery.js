@@ -39,7 +39,9 @@ $(function() {
       speed: 300,
       slidesToShow: 1,
       centerMode: true,
-      variableWidth: true
+      variableWidth: true,
+      autoplay: true,
+      autoplaySpeed: 4000,
     });
   });
 

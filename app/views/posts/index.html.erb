@@ -1,26 +1,5 @@
 
 <div id="contents">
-  <div class="menu">
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to "写真を投稿する", new_post_path, class: 'list'  %></li>
-      <% end %> 
-      <% if user_signed_in? %>
-        <li><%= link_to "マイページ", "/users/#{current_user.id}", class: 'list'  %></li>
-      <% end%>  
-      <% if user_signed_in? %>
-        <li><%= link_to "ログアウト", destroy_user_session_path,  method: :delete , class: 'list' %></li>
-      <% end %>  
-
-      <% if !user_signed_in? %>
-        <li><%= link_to "ログイン", new_user_session_path, class: 'list' %></li>
-      <% end %> 
-      <% if !user_signed_in? %>
-        <li> <%= link_to "新規登録", new_user_registration_path, class: 'list'  %></li>
-      <% end %> 
-      <li> <%= link_to "カテゴリーリスト", categories_path, class: 'list'  %></li>
-    </ul>
-  </div> 
 
   <div class="main">
   <div class=title>
@@ -29,24 +8,19 @@
   <div class=ranking>
     <div class="slideshow-slides">
       <% @likedPosts.each do |post| %>  
-          <%  post.images.first(1).each do |image|  %>    
-            <div class="slide">          
+        <div class="slide"> 
+            <%  post.images.first(1).each do |image|  %>          
               <%= link_to "/posts/#{post.id}", method: :get do%>
                 <%=image_tag image.image.to_s ,class: "" ,height: "465px"%>
-                <div class="po">
+                <div class="slide-detail">
                   <div class="post-title"><%= post.name%></div>
                   <div class="post-name">投稿者&nbsp<%= post.user.nickname %></div>
                 </div>  
-            </div>    
-            <% end %>
-          <% end %>
+              <% end %>
+           <% end %>
+        </div>          
       <% end %>
     </div>
-    <div class="slideshow-slides">
-    
-    
-    </div>
-
   </div>
   <br>
   <div class=title>
