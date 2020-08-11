@@ -42,68 +42,7 @@
         
       <% end %>
     </div>
-    <div class="posts">
-      <% @posts.each do |post| %>    
-        <div class="post">  
-          <div class="post__title">
-            <%= post.name %>(<%= post.liked_users.count %>)
-          </div>    
-          <%  post.images.first(1).each do |image|  %>              
-           
-          <br>
-            <%= link_to image_tag image.image.to_s ,href: "/posts/#{2}", method: :get , width: "200px" ,height: "200px"%>
-          <% end %>
-          <div class="more">
-            <div class="more__name">
-              <a href="/users/<%= post.user.id %>"
-                <p class="wwww"><%= post.user.nickname %></p>
-              </a>
-            </div>
-            <ul class="more__list">
-              <li>
-                <% if user_signed_in? %>
-                  <% if !Favorite.exists?(user_id:current_user.id,post_id:post.id) %>
-                    <%= link_to post_add_path(post),method: :post  do%>
-                    <i class="far fa-star"></i>
-                  <%end%>  
-                <% else %>
-                  <%= link_to post_add_path(post),method: :delete do%>
-                  <i class="fas fa-star"></i>
-              <%end%> 
-            <% end %>
-          <% end %>
-              </li>
-              <li>
-                <%= link_to "/posts/#{post.id}", method: :get do%>
-                  <i class="fas fa-info-circle"></i>
-                <% end %>  
-              </li>
-              <% if user_signed_in? && current_user.id == post.user_id %>
-              <li>
-                <%= link_to "/posts/#{post.id}/edit", method: :get do%>
-                  <i class="fas fa-edit"></i>
-                <% end %>
-              </li>
 
-              <li>
-                <%= link_to "/posts/#{post.id}", method: :delete do%>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
-              </li>
-              <% end %>
-            </ul>        
-
-            <span>
-
-
-            </span>
-          </div>
-
-        </div>
-      
-      <% end %>
-    </div>
-    <%= paginate(@posts) %>
     
   </div>
 

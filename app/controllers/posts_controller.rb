@@ -52,6 +52,9 @@ class PostsController < ApplicationController
     @posts = Post.search(params[:keyword])
   end
 
+  def about 
+  end
+
 #  def search_Ransack
 #    @search = Post.ransack(params[:q])
 #    # 検索結果

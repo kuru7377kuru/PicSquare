@@ -1,10 +1,10 @@
 .header {
-  position: fixed;
+  
   z-index: 10;
   .menu {
     background-color: $black;
     width :100vw;
-    height: 50px;
+    height: 60zpx;
     nav {
       display: flex;
       .header__bar {
@@ -35,15 +35,18 @@
         }
         .menu-list{
           left: 20%;
+          height: 100%;
           display: flex;
           ul {
             display: flex;
+            align-content: center;
     
             li {
-              height: 30px;
+              line-height: 60px;
               border: 1px solid $dimblack;
               text-align: center;
-              padding: 10px;
+              padding: 0 10px;
+              
               .list {
                 color: $orange;
                 text-decoration: none;
@@ -63,4 +66,10 @@
   position: fixed;
   top: 0;
   z-index: 10;
+}
+
+footer {
+  text-align: center;
+  color: #FFF;
+  background-color: black;
 }

@@ -1,0 +1,49 @@
+.about-content {
+  text-align: center;
+  padding-top: 10%;
+
+  .about-title {
+    font-size: 2rem;
+    font-family: "メイリオ";
+    color: #FFF
+  }
+  p {
+    font-size: 1.125rem;
+    margin: 10px 0 42px;
+    color: #FFF
+  }
+
+  .about-button{
+    font-size: 1.3rem;
+    background-color: lightblue;
+    border-radius: 12px;
+    padding: 16px 24px;
+  }
+
+  .about-button:hover {
+    background-color: $orange;
+  }
+
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
+}
+
+.about-detail{
+  padding-top: 15%;
+  padding-left: 3%;
+  p {
+    font-size: 1.125rem;
+    color: #FFF;
+    margin: 8px;
+  }
+}
+.big-bg {
+  
+  background-image: image-url('XEN7615001_TP_V.jpg');
+  background-size: cover;
+  background-color: #aaa;
+  background-blend-mode: multiply;
+  min-height: 100vh;
+}

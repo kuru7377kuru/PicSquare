@@ -31,6 +31,7 @@
             </div>
             <div class="menu-list">
               <ul>
+              <li> <%= link_to "サイト概要", about_posts_path, class: 'list'  %></li>
                 <% if user_signed_in? %>
                   <li><%= link_to "写真を投稿する", new_post_path, class: 'list'  %></li>
                 <% end %> 
@@ -58,7 +59,7 @@
     <%= yield %>
     <footer>
       <p>
-        Copyright PicTweet 2019.
+        Copyright PicSquare 2019.
       </p>
     </footer>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
