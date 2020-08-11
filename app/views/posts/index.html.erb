@@ -5,23 +5,10 @@
   <div class=title>
     <h3>人気の写真</h3>
   </div>
-  <div class=ranking>
-    <div class="slideshow-slides">
-      <% @likedPosts.each do |post| %>  
-        <div class="slide"> 
-            <%  post.images.first(1).each do |image|  %>          
-              <%= link_to "/posts/#{post.id}", method: :get do%>
-                <%=image_tag image.image.to_s ,class: "" ,height: "465px"%>
-                <div class="slide-detail">
-                  <div class="post-title"><%= post.name%></div>
-                  <div class="post-name">投稿者&nbsp<%= post.user.nickname %></div>
-                </div>  
-              <% end %>
-           <% end %>
-        </div>          
-      <% end %>
-    </div>
-  </div>
+aaaa
+
+
+aaaa
   <br>
   <div class=title>
     <h3>最近投稿された写真</h3>
