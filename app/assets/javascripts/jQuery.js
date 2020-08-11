@@ -32,7 +32,7 @@ $(function() {
     },duration)
   });
 
-  $(function() {
+  
     $('.slideshow-slides').slick({
       dots: true,
       infinite: true,
@@ -43,8 +43,13 @@ $(function() {
       autoplay: true,
       autoplaySpeed: 4000,
     });
-  });
 
+  $('.header').each(function() {
+    var $window = $(window),
+        $header = $(this),
+        headerOffsetTop = $header.offset().top;
+
+  });
 });
 
  
