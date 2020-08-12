@@ -52,7 +52,8 @@ class PostsController < ApplicationController
     @posts = Post.search(params[:keyword])
   end
 
-  def about 
+  def about
+    
   end
 
 #  def search_Ransack
