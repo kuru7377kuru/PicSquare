@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 #      get 'search_Ransack', as: :detailed_search
     end
 
+    collection do
+      get 'about'
+    end
+
   end
   resources :notifications, only: :index
   resources :categories
