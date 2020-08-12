@@ -12,9 +12,10 @@
 //
 
 //= require jquery 
-//= require rails-ujs
+
+
 //= require activestorage
-//= require_tree .
 //= require chartkick
 //= require Chart.bundle
 //= require masonry/jquery.masonry
+//= require_tree .
