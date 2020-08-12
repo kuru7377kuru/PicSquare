@@ -31,7 +31,7 @@
             </div>
             <div class="menu-list">
               <ul>
-              <li> <%= link_to "サイト概要", about_posts_path, method: :get, class: 'list'%></li>
+              <li> <%= link_to "サイト概要", new_post_path, method: :get, class: 'list'%></li>
                 <% if user_signed_in? %>
                   <li><%= link_to "写真を投稿する", new_post_path, class: 'list'  %></li>
                 <% end %> 
