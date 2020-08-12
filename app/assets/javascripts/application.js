@@ -13,5 +13,5 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require masonry/jquery.masonry
 //= require_tree .
+//= require masonry/jquery.masonry
